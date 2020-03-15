@@ -1,0 +1,132 @@
+<!DOCTYPE html> <html> <head>
+    <title>RasCon ver.1.0</title>
+    <link rel='stylesheet' type='text/css' media='screen' href="static/style.css" />
+</head>
+<body>
+	<div id="container" style="width:960px">
+
+	<div id="header" style="background-color:#FFA500;">
+	<h1 style="margin-bottom:0;">RasCon Ver.1.0</h1></div>
+
+	<div id="menu" style="background-color:#FFD865;height:430px;width:100px;float:left;text-align:center;">
+	<b>Bluetooth</b><br>
+	●connected<br>
+	00:00<br>
+	<form action="/bluez" method="POST"><button name="btn" value="ON">connect</button></form>
+        <form action="/bluez" method="POST"><button name="btn" value="OFF">disconnect</button></form>
+        <br>
+	<br>
+	<br>
+	<b>Rasberry Pi</b><br>
+	<br>
+	<form action="/raspi" method="POST"><button name="btn" value="sudo reboot">reboot</button></form>
+	<form action="/raspi" method="POST"><button name="btn" value="sudo shutdown">shutdown</button></form>
+	</div>
+
+	<div id="content" style="background-color:#EEEEEE;height:430px;width:430px;float:left;text-align:center;">
+        <div>
+    	<table style="width: 60%;margin:auto">
+		<caption>Virtual Controller</caption>
+		<tr>
+			<td><form action="/btn" method="POST"><button name="btn" value="zl">ZL</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="l">L</button></form></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="l">R</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="zr">ZR</button></form></td>
+		</tr>
+        <tr>
+			<td></td>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="plus">＋</button></form></td>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="minus">-</button></form></td>
+			<td></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>假</td>
+			<td></td>
+			<td>装</td>
+			<td></td>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="x">X</buttonm></form></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>这</td>
+			<td>里</td>
+			<td>是</td>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="y">Y</button></form></td>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="a">A</button></form></td>
+		</tr>
+		<tr>
+			<td>摇</td>
+			<td></td>
+			<td>杆</td>
+			<td></td>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="b">B</button></form></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="up">▲</buttonm></form></td>
+			<td></td>
+			<td></td>
+			<td>假</td>
+			<td></td>
+			<td>装</td>
+		</tr>
+			<td><form action="/btn" method="POST"><button name="btn" value="left">◀</button></form></td>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="right">▶</button></form></td>
+			<td></td>
+			<td>这</td>
+			<td>里</td>
+			<td>是</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="down">▼</button></form></td>
+			<td></td>
+			<td></td>
+			<td>摇</td>
+			<td></td>
+			<td>杆</td>
+		</tr>
+		<tr>
+			<td></td>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="capture">C</button></form></td>
+			<td></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="home">H</button></form></td>	
+			<td></td>
+			<td></td>
+		</tr>
+	</table>
+        </div>
+        <br>
+        <textarea rows="8" cols="48" style="resize:none;"disabled>{{msg}}</textarea>
+	</div>
+	 <div id="content" style="background-color:#EEEEEE;height:430;px;width:430px;float:left;">
+		<p>Script</p>
+		<form action="/script/run" method="POST">
+			<textarea name="script" rows="20" cols="48" style="resize:none;">{{script}}</textarea><br>
+                        
+			<button style="width:360px;height:25px;">RUN</button>
+		</form>
+                <form action="/script/stop" method="POST"><button style="width:360px;height:25px;">STOP</button></form>
+	</div>
+
+	<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
+	<span style=font-family:Arial;>&copy 2020 SKyoKen</span></div>
+
+
+
+</body>
+</html>
+
