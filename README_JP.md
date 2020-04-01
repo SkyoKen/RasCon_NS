@@ -8,9 +8,9 @@
   <a href="https://github.com/SkyoKen/RasCon_NS"><img src="https://img.shields.io/github/license/SkyoKen/RasCon_NS.svg" alt="license"></a>
   </p>
   <p>
-  <a href="https://github.com/SkyoKen/RasCon_NS/blob/master/README.md">中文</a> | 
-  <a href="https://github.com/SkyoKen/RasCon_NS/blob/master/README_JP.md">日本語</a> | 
-  <a href="https://github.com/SkyoKen/RasCon_NS/blob/master/README_EN.md">ENGLISH</a>
+  <a href="README.md">中文</a> | 
+  <a href="README_JP.md">日本語</a> | 
+  <a href="README_EN.md">ENGLISH</a>
 </p>
 </div>
 
