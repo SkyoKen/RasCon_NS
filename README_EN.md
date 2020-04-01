@@ -16,7 +16,7 @@
 
 ## ScreenShot
 <br/>
-<img src="https://github.com/SkyoKen/RasCon_NS/blob/master/image.png">
+<img src="image.png">
 <br/>
 
 ## Environment
