@@ -55,7 +55,8 @@ class ControllerCLI:
          for command in commands:
              cmd,*args=command.split()
              if cmd in self.available_sticks:
-                 print('side = ',cmd,'direction = ',args[0])
+                 #print('side = ',cmd,'direction = ',args[0],'sec=',args[1])
+                 await self.cmd_stick(cmd,args[0],args[1])
              elif cmd in self.available_buttons: #按钮
                  await button_push(self.controller_state,cmd)
              elif cmd.isdecimal(): #等待（ms）
@@ -64,6 +65,72 @@ class ControllerCLI:
                  print(args[0])
              else: #错误代码
                  print('command',cmd,'not found')
+
+    def _set_stick(stick, direction, value=None):
+        if direction == 'reset':
+            stick.set_center()
+        elif direction == 'up':
+            stick.set_up()
+        elif direction == 'down':
+            stick.set_down()
+        elif direction == 'left':
+            stick.set_left()
+        elif direction == 'right':
+            stick.set_right()
+        elif direction in ('h', 'horizontal'):
+            if value is None:
+                raise ValueError(f'Missing value')
+            try:
+                val = int(value)
+            except ValueError:
+                raise ValueError(f'Unexpected stick value "{value}"')
+            stick.set_h(val)
+        elif direction in ('v', 'vertical'):
+            if value is None:
+                raise ValueError(f'Missing value')
+            try:
+                val = int(value)
+            except ValueError:
+                raise ValueError(f'Unexpected stick value "{value}"')
+            stick.set_v(val)
+        else:
+            raise ValueError(f'Unexpected argument "{direction}"')
+        
+
+        return f'{stick.__class__.__name__} was set to ({stick.get_h()}, {stick.get_v()}).'
+
+    async def cmd_stick(self,side,direction,release_sec=50):
+        """
+        stick - Command to set stick positions.
+        :param side: 'l', 'left' for left control stick; 'r', 'right' for right control stick
+        :param direction: 'center', 'up', 'down', 'left', 'right';
+               'h', 'horizontal' or 'v', 'vertical' to set the value directly to the "value" argument
+        :param value: horizontal or vertical value
+        """
+        
+        try:
+            val = float(release_sec)
+        except ValueError:
+            raise ValueError(f'Unexpected stick release_sec "{release_sec}"')
+        if side == 'ls' :
+            stick = self.controller_state.l_stick_state
+            ControllerCLI._set_stick(stick, direction)
+            await self.stickSet(stick,val/1000)
+        elif side == 'rs':
+            stick = self.controller_state.r_stick_state
+            ControllerCLI._set_stick(stick, direction)
+            await self.stickSet(stick,val/1000)
+        else:
+            raise ValueError('Value of side must be "ls" or "rs"')
+    async def stickSet(self,stick,release_sec):
+        #开始摇杆
+        await self.controller_state.send()
+        await asyncio.sleep(release_sec)
+        #释放摇杆
+        stick.set_center()
+        await self.controller_state.send()
+        await asyncio.sleep(0.05)
+
     async def readCommand(self,file):
         user_input = await self.get(file)
         if not user_input:
@@ -80,6 +147,7 @@ class ControllerCLI:
                 continue
 
             cmd,*args = user_input[i].split()
+            
             if cmd == 'for':
                 for _ in range(int(args[0])):
                     until,forcmd = self.forCheck(i,user_input)
@@ -118,6 +186,11 @@ class ControllerCLI:
                         commands.append(get)
             elif self.isCommand(cmd):
                 commands.append(user_input[i])
+            elif cmd=='test':
+                abc = []
+                abc.append('l')
+                abc.append('r')
+                await button_push(self.controller_state,*abc)
             else:
                 print('commands',cmd,'not found')
 
