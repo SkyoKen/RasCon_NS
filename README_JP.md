@@ -40,7 +40,7 @@ sudo cp -r joycontrol/joycontrol RasCon_NS/
 ```
 sudo apt install python3-dbus libhidapi-hidraw0 apache2
 
-sudo pip3 install dbus-python flask
+sudo pip3 install dbus-python flask hid aioconsole crc8
 ```
 
 ## 実行
