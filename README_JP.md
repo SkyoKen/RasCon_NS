@@ -1,6 +1,6 @@
 <div align="center">
-  <h1>RasCon Ver.1.0</h1>
-  <p>Bluetooth経由でNintendo Switchに接続して、Webページからの制御とスクリプトの利用を可能にします。。</p>
+  <h1>RasCon Ver.1.2</h1>
+  <p>Bluetooth経由でNintendo Switchに接続して、Webページからの制御とスクリプト、amiiboの利用を可能にします。。</p>
   <p>オープンソースプロジェクト<a href="https://github.com/mart1nro/joycontrol">joycontrol</a>に基づいて</p>
   <p>
   <a href="https://github.com/SkyoKen/RasCon_NS"><img src="https://img.shields.io/github/forks/SkyoKen/RasCon_NS.svg" alt="forks"></a>
@@ -8,15 +8,15 @@
   <a href="https://github.com/SkyoKen/RasCon_NS"><img src="https://img.shields.io/github/license/SkyoKen/RasCon_NS.svg" alt="license"></a>
   </p>
   <p>
-  <a href="https://github.com/SkyoKen/RasCon_NS/blob/master/README.md">中文</a> | 
-  <a href="https://github.com/SkyoKen/RasCon_NS/blob/master/README_JP.md">日本語</a> | 
-  <a href="https://github.com/SkyoKen/RasCon_NS/blob/master/README_EN.md">ENGLISH</a>
+  <a href="README.md">中文</a> | 
+  <a href="README_JP.md">日本語</a> | 
+  <a href="README_EN.md">ENGLISH</a>
 </p>
 </div>
 
 ## 画面
 <br/>
-<img src="https://github.com/SkyoKen/RasCon_NS/blob/master/image.png">
+<img src="image.png">
 <br/>
 
 ## 環境
@@ -28,7 +28,7 @@
 raspi3b +（rasbian）で正常に実行されます。
 
 ## 使用する前に
-jotcontrolプロジェクトのjoycontrolフォルダーをこのプロジェクトディレクトリにコピーする必要があります。
+1.joycontrolプロジェクトのjoycontrolフォルダーをこのプロジェクトディレクトリにコピーする必要があります。
 ```
 sudo git clone https://github.com/SkyoKen/RasCon_NS.git
 
@@ -36,6 +36,13 @@ sudo git clone https://github.com/mart1nro/joycontrol.git
 
 sudo cp -r joycontrol/joycontrol RasCon_NS/
 ```
+2.必要なパッケージ
+```
+sudo apt install python3-dbus libhidapi-hidraw0 apache2
+
+sudo pip3 install dbus-python flask
+```
+
 ## 実行
 1．ターミナルを開き、コマンドを実行します
 ```
@@ -56,10 +63,6 @@ https://github.com/SkyoKen/RasCon_NS/releases
 
 ## Possible problems
 
-### Q：No module named 'dbus'
-
-A： `sudo pip3 install dbus-python`を実行します
-
 ### Q：hci0 device not found
 A：hci0が存在するかどうかを確認、`hciconfig`を実行します
 
@@ -68,10 +71,11 @@ A：hci0が存在するかどうかを確認、`hciconfig`を実行します
 ## 参考
 万恶之源 [Switch-Fightstick](https://github.com/progmem/Switch-Fightstick)
 
-蓝牙模拟ns手柄 [joycontrol](https://github.com/mart1nro/joycontrol)
+蓝牙模拟ns手柄（可模拟amiibo） [joycontrol](https://github.com/mart1nro/joycontrol)
 
 蓝牙模拟ns手柄实现剑盾自动化 [poke_auto_joy](https://github.com/xxwsL/poke_auto_joy)
 
 小白也能写的自动化脚本 [EasyCon（伊机控）](https://github.com/nukieberry/PokemonTycoon)
+
 
 
