@@ -10,16 +10,18 @@
 暂不显示
 
 【按键】
-语法：键位 [持续时间(ms)|DOWN|UP]
-（键位可以取A、B、X、Y、L、R、ZL、ZR、MINUS(-)、PLUS(+)、LCLICK(按左摇杆)、RCLICK(按右摇杆)、HOME(返回系统)、CAPTURE(截屏)、LEFT、RIGHT、UP、DOWN；持续时间省略则为默认50ms）
+语法：键位 [持续时间(ms)]
+（键位可以取A、B、X、Y、L、R、ZL、ZR、MINUS(-)、PLUS(+)、L_STICK(按左摇杆)、R_STICK(按右摇杆)、HOME(返回系统)、CAPTURE(截屏)、LEFT、RIGHT、UP、DOWN；持续时间省略则为默认50ms）
 示例：A（按下A键50毫秒）
 
 【摇杆】
 未完成
-暂定语法：LS|RS 方向 持续时间(ms)
+暂定语法：LS|RS 方向,持续时间(ms)
+示例：LS up,100
 
 【等待】
-语法：等待时间(ms)
+语法：[WAIT] 等待时间(ms)
+示例：WAIT 500
 示例：2000
 
 【循环】

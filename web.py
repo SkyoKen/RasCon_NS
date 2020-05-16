@@ -1,4 +1,5 @@
 from flask import Flask,render_template,request
+import shutil
 import os
 
 app = Flask(__name__)
@@ -15,7 +16,7 @@ def read(file):
 def write(file,msg):
     with open('file/'+file,'w') as f:
         f.write(msg)
-def clear(file):
+def clean(file):
     with open('file/'+file,'w+') as f:
         f.truncate()
 
@@ -40,6 +41,16 @@ def btn():
     if request.method == 'POST':
         btn = request.form['btn']
         write('command.txt',btn)
+        if btn == 'amiibo clean':
+            path = 'file/amiibo/'
+            shutil.rmtree(path)
+            os.mkdir(path)
+            msg,script=default()
+            return render_template('index.html',msg =msg,script =script,amiibo='cleaned!')
+        elif btn == 'amiibo remove':
+            write('command.txt','amiibo remove')
+            msg,script=default()
+            return render_template('index.html',msg = msg,script =script,amiibo='removed!')
 
     msg,script=default()
     return render_template('index.html',msg = msg,script =script)
@@ -63,6 +74,20 @@ def stop():
     msg,script=default()
     return render_template('index.html',msg = msg,script =script)
 
+#Amiibo
+@app.route('/amiibo/upload',methods=['POST'])
+def upload():
+    file = request.files['file']
+    filename = file.filename
+    if filename.rsplit('.', 1)[1].lower() in {'bin','BIN'}:
+        filename = filename.replace(' ','_').lower()
+        file.save('file/amiibo/'+filename)
+        write('command.txt','amiibo '+filename)
+        msg,script=default()
+        return render_template('index.html',msg = msg,script =script,amiibo='OK!')
+    else:
+        msg,script=default()
+        return render_template('index.html',msg = msg,script =script,amiibo='NO! This isn`t bin file.') 
 #raspi
 @app.route('/raspi',methods=['POST'])
 def raspi():
@@ -71,7 +96,7 @@ def raspi():
         os.system(cmd)
 
 if __name__ == '__main__':
-    clear('message.txt')
-    clear('command.txt')
-    clear('script.txt')
+    clean('message.txt')
+    clean('command.txt')
+    clean('script.txt')
     app.run(debug=True,host='0.0.0.0')

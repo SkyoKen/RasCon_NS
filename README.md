@@ -1,6 +1,6 @@
 <div align="center">
-  <h1>RasCon Ver.1.1</h1>
-  <p>蓝牙连接Nintendo Switch，并可通过网页控制和使用脚本</p>
+  <h1>RasCon Ver.1.2</h1>
+  <p>蓝牙连接Nintendo Switch，并可通过网页控制和使用脚本与amiibo</p>
   <p>基于开源项目  <a href="https://github.com/mart1nro/joycontrol">joycontrol</a></p>
   <p>
   <a href="https://github.com/SkyoKen/RasCon_NS"><img src="https://img.shields.io/github/forks/SkyoKen/RasCon_NS.svg" alt="forks"></a>
@@ -36,39 +36,13 @@ sudo git clone https://github.com/mart1nro/joycontrol.git
 
 sudo cp -r joycontrol/joycontrol RasCon_NS/
 ```
-2.修改joycontrol中的controller_state.py的设定
+2.安装所需要的库
 ```
-sudo nano RasCon_NS/joycontrol/controller_state.py
-```
-将约18行的`self.l_stick_state = self.r_stick_state = None`之后关于joycon的初期设定
+sudo apt install python3-dbus libhidapi-hidraw0 apache2
 
-```python
-         if controller in (Controller.PRO_CONTROLLER, Controller.JOYCON_L):
-             # load calibration data from memory
-             calibration = None
-             if spi_flash is not None:
-                 calibration_data = spi_flash.get_user_l_stick_calibration()
-                 if calibration_data is None:
-                     calibration_data = spi_flash.get_factory_l_stick_calibration()
-                 calibration = LeftStickCalibration.from_bytes(calibration_data)
-             self.l_stick_state = StickState(calibration=calibration)
-         # create right stick state
-         if controller in (Controller.PRO_CONTROLLER, Controller.JOYCON_R):
-             # load calibration data from memory
-             calibration = None
-             if spi_flash is not None:
-                 calibration_data = spi_flash.get_user_r_stick_calibration()
-                 if calibration_data is None:
-                     calibration_data = spi_flash.get_factory_r_stick_calibration()
-                 calibration = RightStickCalibration.from_bytes(calibration_data)
-             self.r_stick_state = StickState(calibration=calibration)
+sudo pip3 install dbus-python flask
 ```
-改为
 
-```python
-         self.l_stick_state = StickState(0x07FF, 0x07FF, calibration = _StickCalibration(0x07FF, 0x07FF, 0x07FF, 0x07FF, 0x07FF, 0x07FF))
-         self.r_stick_state = StickState(0x07FF, 0x07FF, calibration = _StickCalibration(0x07FF, 0x07FF, 0x07FF, 0x07FF, 0x07FF, 0x07FF))
-```
 ## 快速运行
 1．打开终端，运行命令
 ```
@@ -89,10 +63,6 @@ https://github.com/SkyoKen/RasCon_NS/releases
 
 ## 可能遇到的问题
 
-### Q：python3的dbus库不存在
-
-A： 运行`sudo pip3 install dbus-python`
-
 ### Q：找不到hci0
 A：确认hci0是否存在，运行命令`hciconfig`
 
@@ -101,7 +71,7 @@ A：确认hci0是否存在，运行命令`hciconfig`
 ## 参考
 万恶之源 [Switch-Fightstick](https://github.com/progmem/Switch-Fightstick)
 
-蓝牙模拟ns手柄 [joycontrol](https://github.com/mart1nro/joycontrol)
+蓝牙模拟ns手柄（可模拟amiibo） [joycontrol](https://github.com/mart1nro/joycontrol)
 
 蓝牙模拟ns手柄实现剑盾自动化 [poke_auto_joy](https://github.com/xxwsL/poke_auto_joy)
 

@@ -1,13 +1,13 @@
 <!DOCTYPE html> <html> <head>
-    <title>RasCon ver.1.1</title>
+    <title>RasCon ver.1.2</title>
 </head>
 <body>
 	<div id="container" style="width:960px">
 
 	<div id="header" style="background-color:#FFA500;">
-	<h1 style="margin-bottom:0;">RasCon Ver.1.1</h1></div>
+	<h1 style="margin-bottom:0;">RasCon Ver.1.2</h1></div>
 
-	<div id="menu" style="background-color:#FFD865;height:430px;width:100px;float:left;text-align:center;">
+	<div id="menu" style="background-color:#FFD865;height:500px;width:100px;float:left;text-align:center;">
 	<b>Bluetooth</b><br>
 	●connected<br>
 	00:00<br>
@@ -20,9 +20,10 @@
 	<br>
 	<form action="/raspi" method="POST"><button name="btn" value="sudo reboot">reboot</button></form>
 	<form action="/raspi" method="POST"><button name="btn" value="sudo shutdown">shutdown</button></form>
+        <br>
 	</div>
 
-	<div id="content" style="background-color:#EEEEEE;height:430px;width:430px;float:left;text-align:center;">
+	<div id="content" style="background-color:#EEEEEE;height:500px;width:430px;float:left;text-align:center;">
         <div>
     	<table style="width: 60%;margin:auto">
 		<caption>Virtual Controller</caption>
@@ -32,7 +33,7 @@
 			<td></td>
 			<td></td>
 			<td></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="l">R</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="r">R</button></form></td>
 			<td><form action="/btn" method="POST"><button name="btn" value="zr">ZR</button></form></td>
 		</tr>
         <tr>
@@ -45,27 +46,27 @@
 			<td></td>
 		</tr>
 		<tr>
-			<td><form action="/btn" method="POST"><button name="btn" value="">┏</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="ls up 100">↑</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="">┓</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value=""></button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="ls up,100">↑</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value=""></button></form></td>
 			<td></td>
 			<td></td>
 			<td><form action="/btn" method="POST"><button name="btn" value="x">X</buttonm></form></td>
 			<td></td>
 		</tr>
 		<tr>
-			<td><form action="/btn" method="POST"><button name="btn" value="ls left 100">←</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="">●</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="ls right 100">→</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="ls left,100">←</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="l_stick">●</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="ls right,100">→</button></form></td>
 			<td></td>
 			<td><form action="/btn" method="POST"><button name="btn" value="y">Y</button></form></td>
 			<td></td>
 			<td><form action="/btn" method="POST"><button name="btn" value="a">A</button></form></td>
 		</tr>
 		<tr>
-			<td><form action="/btn" method="POST"><button name="btn" value="">┗</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="ls down 100">↓</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="">┛</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value=""></button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="ls down,100">↓</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value=""></button></form></td>
 			<td></td>
 			<td></td>
 			<td><form action="/btn" method="POST"><button name="btn" value="b">B</button></form></td>
@@ -76,26 +77,26 @@
 			<td><form action="/btn" method="POST"><button name="btn" value="up">▲</buttonm></form></td>
 			<td></td>
                         <td></td>
-             		<td><form action="/btn" method="POST"><button name="btn" value="">┏</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="rs up 100">↑</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="">┓</button></form></td>
+             		<td><form action="/btn" method="POST"><button name="btn" value=""></button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="rs up,100">↑</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value=""></button></form></td>
 		</tr>
 			<td><form action="/btn" method="POST"><button name="btn" value="left">◀</button></form></td>
 			<td></td>
 			<td><form action="/btn" method="POST"><button name="btn" value="right">▶</button></form></td>
                         <td></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="rs left 100">←</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="">●</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="rs right 100">→</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="rs left,100">←</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="r_stick">●</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="rs right,100">→</button></form></td>
 		</tr>
 		<tr>
 			<td></td>
 			<td><form action="/btn" method="POST"><button name="btn" value="down">▼</button></form></td>
 			<td></td>
 			<td></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="">┗</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="rs down 100">↓</button></form></td>
-			<td><form action="/btn" method="POST"><button name="btn" value="">┛</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value=""></button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value="rs down,100">↓</button></form></td>
+			<td><form action="/btn" method="POST"><button name="btn" value=""></button></form></td>
 		</tr>
 		<tr>
 			<td></td>
@@ -109,17 +110,30 @@
 	</table>
         </div>
         <br>
-        <textarea rows="8" cols="48" style="resize:none;"disabled>{{msg}}</textarea>
+        <textarea rows="12" cols="48" style="resize:none;"disabled>{{msg}}</textarea>
 	</div>
-	 <div id="content" style="background-color:#EEEEEE;height:430;px;width:430px;float:left;">
+	 <div id="content" style="background-color:#EEEEEE;height:300px;width:430px;float:left;">
 		<p>Script</p>
 		<form action="/script/run" method="POST">
-			<textarea name="script" rows="20" cols="48" style="resize:none;">{{script}}</textarea><br>
+			<textarea name="script" rows="13" cols="48" style="resize:none;">{{script}}</textarea><br>
                         
 			<button style="width:360px;height:25px;">RUN</button>
 		</form>
                 <form action="/script/stop" method="POST"><button style="width:360px;height:25px;">STOP</button></form>
-	</div>
+         </div>
+         <div id="content" style="background-color:#EEEEEE;height:200px;width:430px;float:left;">  
+                
+                <p>Amiibo	{{amiibo}}</p>
+                <form action="/amiibo/upload" id="upload-form" action="upload.php" method="POST" enctype="multipart/form-data" style="text-align:center;">
+　　　              <input type="file" id="upload" name="file" /> <br />
+　　　              <input type="submit" value="Upload" style="width:100px;height:25px;"/> 
+                
+                </form>   
+	
+        
+             <form action="/btn" method="POST" style="text-align:center;"><button name="btn" value="amiibo remove" style="width:100px;height:25px;">remove</button></form>
+             <form action="/btn" method="POST" style="text-align:center;"><button name="btn" value="amiibo clean" style="width:100px;height:25px;">clean</button></form>  
+        </div>  
 
 	<div id="footer" style="background-color:#FFA500;clear:both;text-align:center;">
 	<span style=font-family:Arial;>&copy 2020 SKyoKen</span></div>
