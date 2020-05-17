@@ -67,7 +67,7 @@ class CCLI():
          for command in commands:
              print(command)
              cmd,*args=command.split()
-             print(cmd)
+
              if cmd in self.available_sticks: #摇杆
                  dir,sec,*sth=args[0].split(',')
                  await self.cmd_stick(cmd,dir,sec)
@@ -81,7 +81,7 @@ class CCLI():
                  if args[0] == 'remove':
                      self.controller_state.set_nfc(None)
                      print('amiibo已移除')
-                 else:
+                 elif args[0] != 'clean':
                      await self.set_amiibo(args[0]) #设置amiibo
              else: #错误代码
                  print('command',cmd,'not found')

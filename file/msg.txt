@@ -30,5 +30,12 @@ FOR 循环次数
 ...
 NEXT
 
+【Amiibo】
+Amiibo 读取
+语法：AMIIBO [文件名]
+
+Amiibo 移除
+语法：AMIIBO REMOVE
+
 
 脚本参考铃落大佬的伊机控写的

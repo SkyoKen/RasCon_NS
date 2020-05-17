@@ -1,6 +1,7 @@
 from flask import Flask,render_template,request
 import shutil
 import os
+import amiibos
 
 app = Flask(__name__)
 script = ""
@@ -88,6 +89,33 @@ def upload():
     else:
         msg,script=default()
         return render_template('index.html',msg = msg,script =script,amiibo='NO! This isn`t bin file.') 
+#动森批量刷amiibo跳转
+@app.route('/amiibos')
+def toAmiibosUpload():
+    return render_template('amiibos.html')
+
+#上传amiibo压缩包
+@app.route('/amiibos',methods=['POST'])
+def amiibosUpload():
+    file = request.files['file']
+    filename = file.filename
+    if filename.rsplit('.',1)[1].lower() == 'zip':
+
+        #清除残余amiibo数据
+        path = 'file/amiibo/'
+        shutil.rmtree(path)
+        os.mkdir(path)
+
+        #保存zip压缩包
+        filename = filename.replace(' ','_').lower()
+        file.save(path+filename)
+
+        #解压并生成脚本
+        amiibos.run(filename)
+        return render_template('amiibos.html',msg = '上传成功，脚本生成完毕，请按下方按钮跳转查看')
+    else:
+        return render_template('amiibos.html',msg = '上传失败，仅支持zip压缩文件')
+
 #raspi
 @app.route('/raspi',methods=['POST'])
 def raspi():

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>动森巴列岛批量刷amiibo</title>
+</head>
+<body>
+    <h1 style="margin-bottom:0;">动森巴列岛批量刷amiibo</h1></div>
+<div id="content" style="background-color:#EEEEEE;">  
+    <p>上传Amiibo压缩包(仅限zip格式)</p>
+    <p>上传成功后，跳转回去检查脚本是否正确，即可点击RUN开始批量刷amiibo</p>
+    <br>
+    <p>由于个别小动物召唤时间较长，脚本刷amiibo平均时间设定的较长。</p> 
+    <p>出现小动物已召唤的提示为正常现象</p>
+    <p>亲测连刷40个amiibo没有出现问题</p> 
+    <form action="/amiibos" id="upload-form" action="upload.php" method="POST" enctype="multipart/form-data">
+        <input type="file" id="upload" name="file" />
+        <input type="submit" value="生成脚本" style="width:100px;height:25px;"/>
+        <p>※之前上传的amiibo文件将会全部清空</p> 
+    </form>
+    <br>
+    <p>{{msg}}</p>
+    <form action="/"><button>跳转去运行脚本</button></form>   
+</div> 
+</body>
+</html>
