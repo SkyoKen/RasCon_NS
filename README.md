@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>RasCon Ver.1.2</h1>
+  <h1>RasCon Ver.1.2.1</h1>
   <p>蓝牙连接Nintendo Switch，并可通过网页控制和使用脚本与amiibo</p>
   <p>基于开源项目  <a href="https://github.com/mart1nro/joycontrol">joycontrol</a></p>
   <p>

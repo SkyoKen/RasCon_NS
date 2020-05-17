@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>RasCon Ver.1.2</h1>
+  <h1>RasCon Ver.1.2.1</h1>
   <p>Bluetooth経由でNintendo Switchに接続して、Webページからの制御とスクリプト、amiiboの利用を可能にします。。</p>
   <p>オープンソースプロジェクト<a href="https://github.com/mart1nro/joycontrol">joycontrol</a>に基づいて</p>
   <p>

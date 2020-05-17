@@ -57,12 +57,11 @@ def readAmiibo():
 
             cmd.append(sendCMD('Y'))
             cmd.append(sendCMD('amiibo '+amiibo))
+            cmd.append(sendCMD('FOR 4'))
             cmd.append(sendCMD('A'))
-            cmd.append(sendCMD('2000'))
-            cmd.append(sendCMD('A'))
-            cmd.append(sendCMD('2000'))
-            cmd.append(sendCMD('A'))
-            cmd.append(sendCMD('2000'))
+            cmd.append(sendCMD('1000'))
+            cmd.append(sendCMD('NEXT'))
+
 
 #    print('amiibo全部读取完毕')
     cmd.append(sendCMD('B'))

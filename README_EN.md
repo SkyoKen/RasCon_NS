@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>RasCon Ver.1.2</h1>
+  <h1>RasCon Ver.1.2.1</h1>
   <p>Connect to Nintendo Switch over Bluetooth, to enable control, emulate amiibo and use script from the web.</p>
   <p>Based on open source projects  <a href="https://github.com/mart1nro/joycontrol">joycontrol</a></p>
   <p>
