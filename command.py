@@ -1,6 +1,7 @@
 import inspect
 import logging
 import asyncio
+import random
 import signal
 import shlex
 
@@ -73,8 +74,17 @@ class CCLI():
                  await self.cmd_stick(cmd,dir,sec)
              elif cmd in self.available_buttons: #按钮
                  await button_push(self.controller_state,cmd)
-             elif cmd.isdecimal() or cmd == 'wait': #等待（ms）
-                 await asyncio.sleep(float(cmd)/1000)
+             elif cmd.isdecimal():
+                 await asyncio.sleep(float(cmd) / 1000)
+             elif cmd == 'wait': #等待（ms）
+                 await asyncio.sleep(float(args[0]) / 1000)
+             elif cmd == 'waitrandom':
+                 if args[0].isdecimal and args[1].isdecimal:
+                    random_wait = random.randint(int(args[0]), (int(args[1])+1))
+                    print(f'rand wait {random_wait}')
+                    await asyncio.sleep(float(random_wait) / 1000)
+                 else:
+                     print(f'command waitrandom args need to be int {args[0]} {args[1]}' )
              elif cmd == 'print':
                  print(args[0]) #输出
              elif cmd == 'amiibo':
@@ -181,7 +191,14 @@ class CCLI():
             return
         await self.clean(file)
     def isCommand(self,cmd):
-        return cmd in self.available_sticks or cmd in self.available_buttons or cmd.isdecimal() or cmd =='print' or cmd == 'wait' or cmd == 'amiibo'
+        return (cmd in
+                self.available_sticks or
+                cmd in self.available_buttons or
+                cmd.isdecimal() or
+                cmd == 'print' or
+                cmd == 'wait' or
+                cmd == 'waitrandom' or
+                cmd == 'amiibo')
 
     def forCheck(self,n,user_input):
         commands = []
